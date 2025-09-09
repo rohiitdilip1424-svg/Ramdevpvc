@@ -16,7 +16,7 @@
     }
     header {
       background: #1d3557;
-      padding: 1rem 1.2rem;
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -24,43 +24,45 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      flex-wrap: wrap;
     }
-    .logo-container {
-      flex: 0 0 auto;
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1 1 auto;
     }
     .logo-image {
-      height: 80px;
+      height: 48px;
       width: auto;
-      display: block;
       user-select: none;
       user-drag: none;
     }
     .business-name {
-      flex: 1 1 auto;
-      text-align: center;
       font-weight: 900;
-      font-size: 2.4rem;
-      color: #f4a261; /* Orange color */
-      letter-spacing: 4px;
+      font-size: 1.6rem;
+      color: #f4a261;
+      letter-spacing: 3px;
       user-select: none;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      white-space: nowrap;
     }
     .main-nav {
       flex: 0 0 auto;
       display: flex;
-      gap: 18px;
+      gap: 12px;
       align-items: center;
+      flex-wrap: nowrap;
     }
     .main-nav button {
       background: transparent;
       border: 2px solid #f4a261;
       color: #f4a261;
       font-weight: 600;
-      padding: 0.45rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 24px;
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -72,11 +74,6 @@
       background: #f4a261;
       color: #1d3557;
       outline: none;
-    }
-    .main-nav button svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
     }
     section {
       max-width: 1000px;
@@ -280,27 +277,20 @@
       }
       header {
         flex-wrap: wrap;
-        padding: 1.3rem 0.7rem;
-        justify-content: center;
-      }
-      .logo-image {
-        height: 70px;
       }
       .business-name {
-        margin: 10px 0;
-        font-size: 1.8rem;
-      }
-      .main-nav {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
       }
     }
     @media (max-width: 480px) {
       .main-nav {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
+        overflow-x: auto;
+      }
+      .main-nav button {
+        flex: 0 0 auto;
+        font-size: 0.9rem;
+        padding: 0.35rem 0.8rem;
       }
     }
   </style>
@@ -313,21 +303,18 @@
 </head>
 <body>
   <header>
-    <div class="logo-container" aria-label="RAMDEV PVC Logo">
+    <div class="header-left">
       <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/1f481623-f2f3-4512-8b2d-d6d04df5fd10.png" alt="RAMDEV PVC Logo" class="logo-image" />
+      <div class="business-name">RAMDEV PVC</div>
     </div>
-    <div class="business-name">RAMDEV PVC</div>
     <nav class="main-nav">
       <button type="button" data-target="about" aria-controls="about" aria-selected="true" class="active">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zM4 20v-1c0-2.66 5.33-4 8-4s8 1.34 8 4v1H4z"/></svg>
         About
       </button>
       <button type="button" data-target="products" aria-controls="products" aria-selected="false">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M20 6H4v12h16V6zm-2 6H6v-2h12v2z"/></svg>
         Products
       </button>
       <button type="button" data-target="contact" aria-controls="contact" aria-selected="false">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 8V7l-3 2-2-2-5 5 2 2 3-3h1v5h2v-5h1v3l2-2-2-2z"/></svg>
         Contact
       </button>
     </nav>
@@ -336,7 +323,7 @@
   <section id="about" class="active" role="region" aria-labelledby="about-title">
     <h2 id="about-title">About RAMDEV PVC</h2>
     <p class="about-big">
-      RAMDEV PVC is a trusted manufacturer and supplier of premium PVC doors, wall and ceiling panels, and louvers in Coimbatore. Partnered with KAKA company, we use only high-quality, durable PVC materials to deliver stylish and maintenance-free solutions tailored for residential, commercial, and industrial projects. With a commitment to quality craftsmanship, timely delivery, and customer service excellence, RAMDEV PVC is the preferred choice of architects, builders, and homeowners in the Coimbatore region.
+      RAMDEV PVC is a trusted manufacturer and supplier of premium PVC doors, wall and ceiling panels, and louvers in Coimbatore. Partnered with KAKA company, we use only high-quality, durable high-density PVC materials known for their strength, weather resistance, and elegant design. Our versatile product range is perfect for residential, commercial, and industrial applications, offering stylish, maintenance-free solutions that enhance any space. Committed to quality craftsmanship, timely delivery, and exceptional customer service, RAMDEV PVC is the preferred choice for architects, builders, and homeowners in Coimbatore.
     </p>
     <div class="about-cols" aria-label="Company profile and mission">
       <div>
@@ -500,13 +487,4 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
