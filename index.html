@@ -7,16 +7,18 @@
   <link rel="icon" type="image/png" sizes="64x64"
         href="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fb161919-f588-4446-8f39-adb74fba3936.png" />
   <style>
+    /* Mobile-first CSS */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f7f9fb;
       color: #2c3e50;
       min-height: 100vh;
+      line-height: 1.5;
     }
     header {
       background: #1d3557;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -29,45 +31,45 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       flex: 1 1 auto;
     }
     .logo-image {
-      height: 48px;
+      height: 40px;
       width: auto;
       user-select: none;
       user-drag: none;
     }
     .business-name {
       font-weight: 900;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #f4a261;
-      letter-spacing: 3px;
-      user-select: none;
+      letter-spacing: 2px;
       white-space: nowrap;
+      user-select: none;
     }
     .main-nav {
       flex: 0 0 auto;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
-      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
     }
     .main-nav button {
       background: transparent;
       border: 2px solid #f4a261;
       color: #f4a261;
       font-weight: 600;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.8rem;
       border-radius: 24px;
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      user-select: none;
+      font-size: 0.95rem;
+      flex: 0 0 auto;
       white-space: nowrap;
+      user-select: none;
     }
     .main-nav button:hover,
     .main-nav button.active {
@@ -77,8 +79,8 @@
     }
     section {
       max-width: 1000px;
-      margin: 3rem auto;
-      padding: 2.5rem 2.5rem;
+      margin: 2rem auto 3rem auto;
+      padding: 2rem 1.5rem;
       background: white;
       border-radius: 12px;
       box-shadow: 0 4px 14px rgb(0 0 0 / 0.08);
@@ -100,8 +102,8 @@
     }
     h2 {
       color: #1d3557;
-      font-size: 2.2rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
       border-bottom: 3px solid #f4a261;
       display: inline-block;
       padding-bottom: 6px;
@@ -109,22 +111,21 @@
     }
     .about-big {
       line-height: 1.7;
-      font-size: 1.15rem;
-      margin-bottom: 2rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
       color: #34495e;
       user-select: text;
     }
     .about-cols {
       display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 1.5rem;
       font-size: 1rem;
       color: #34495e;
     }
     .about-cols > div {
-      flex: 1 1 320px;
       background: #f4f7f8;
-      padding: 1.5rem 1.8rem;
+      padding: 1rem 1.2rem;
       border-radius: 8px;
       box-shadow: inset 0 0 10px rgb(31 49 67 / 0.1);
       user-select: text;
@@ -132,44 +133,40 @@
     .about-cols h3 {
       color: #1d3557;
       font-weight: 700;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
       user-select: none;
-    }
-    ul li {
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-      user-select: text;
     }
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
     .product-card {
       background: #f9fafb;
       border-radius: 14px;
-      padding: 1.8rem 1.5rem;
+      padding: 1.3rem 1.2rem;
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.07);
       color: #2c3e50;
       cursor: default;
       transition: box-shadow 0.3s ease;
       user-select: none;
     }
-    .product-card:hover {
+    .product-card:hover, .product-card:focus {
       box-shadow: 0 7px 22px rgb(0 0 0 / 0.12);
+      outline: none;
     }
     .card-title {
       font-weight: 700;
-      font-size: 1.25rem;
-      margin-bottom: 0.6rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
       color: #1d3557;
       user-select: text;
     }
     .card-desc {
-      font-size: 1rem;
-      margin-bottom: 1.1rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
       color: #516374;
-      min-height: 3.1em;
+      min-height: 3em;
       user-select: text;
     }
     .pdf-btn {
@@ -177,26 +174,25 @@
       border: none;
       border-radius: 30px;
       color: #1d3557;
-      padding: 0.75rem 2rem;
+      padding: 0.6rem 1.8rem;
       font-weight: 700;
       cursor: pointer;
       transition: background 0.3s;
-      font-size: 1rem;
-      width: fit-content;
-      display: inline-block;
+      font-size: 0.9rem;
       user-select: none;
-      margin-top: 12px;
     }
-    .pdf-btn:hover {
+    .pdf-btn:hover,
+    .pdf-btn:focus {
       background: #e07b39;
       color: #fff;
+      outline: none;
     }
     form {
       max-width: 520px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 1rem;
       user-select: text;
     }
     label {
@@ -204,7 +200,7 @@
       color: #34495e;
     }
     input, textarea {
-      padding: 10px;
+      padding: 9px;
       font-size: 1rem;
       border-radius: 6px;
       border: 1.8px solid #d0d7de;
@@ -220,27 +216,29 @@
     button[type="submit"] {
       background: #f4a261;
       border: none;
-      padding: 12px 0;
+      padding: 11px 0;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #1d3557;
       cursor: pointer;
       transition: background 0.3s;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       user-select: none;
     }
-    button[type="submit"]:hover {
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
       background: #e07b39;
       color: #fff;
+      outline: none;
     }
     .contact-info {
       max-width: 520px;
-      margin: 1.8rem auto 0;
+      margin: 1.5rem auto 0;
       text-align: center;
       font-weight: 600;
       color: #456275;
-      font-size: 1.05rem;
+      font-size: 1rem;
       user-select: none;
     }
     .contact-info a {
@@ -254,49 +252,49 @@
     }
     .contact-info svg {
       vertical-align: middle;
-      margin-right: 6px;
+      margin-right: 5px;
       fill: #f4a261;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
     }
     footer {
       text-align: center;
       padding: 15px 10px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 1.1px;
       color: #f4a261;
       background: #1d3557;
       user-select: none;
-      margin-top: 3rem;
+      margin-top: 2rem;
       border-radius: 0 0 15px 15px;
     }
-    @media (max-width: 700px) {
+
+    /* Larger screens */
+    @media (min-width: 600px) {
       .about-cols {
-        flex-direction: column;
+        flex-direction: row;
       }
-      header {
-        flex-wrap: wrap;
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       }
-      .business-name {
-        font-size: 1.4rem;
-        letter-spacing: 2px;
+      .card-desc {
+        min-height: 3.5em;
       }
     }
-    @media (max-width: 480px) {
-      .main-nav {
-        overflow-x: auto;
+    @media (min-width: 1000px) {
+      .business-name {
+        font-size: 1.6rem;
+        letter-spacing: 3px;
       }
-      .main-nav button {
-        flex: 0 0 auto;
-        font-size: 0.9rem;
-        padding: 0.35rem 0.8rem;
+      h2 {
+        font-size: 2.2rem;
       }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function(){
+    (function() {
       emailjs.init("5yDNaiFbQym1ug1JD");
     })();
   </script>
@@ -308,18 +306,11 @@
       <div class="business-name">RAMDEV PVC</div>
     </div>
     <nav class="main-nav">
-      <button type="button" data-target="about" aria-controls="about" aria-selected="true" class="active">
-        About
-      </button>
-      <button type="button" data-target="products" aria-controls="products" aria-selected="false">
-        Products
-      </button>
-      <button type="button" data-target="contact" aria-controls="contact" aria-selected="false">
-        Contact
-      </button>
+      <button type="button" data-target="about" aria-controls="about" aria-selected="true" class="active">About</button>
+      <button type="button" data-target="products" aria-controls="products" aria-selected="false">Products</button>
+      <button type="button" data-target="contact" aria-controls="contact" aria-selected="false">Contact</button>
     </nav>
   </header>
-
   <section id="about" class="active" role="region" aria-labelledby="about-title">
     <h2 id="about-title">About RAMDEV PVC</h2>
     <p class="about-big">
@@ -346,7 +337,6 @@
       </div>
     </div>
   </section>
-
   <section id="products" role="region" aria-labelledby="products-title">
     <h2 id="products-title">Our Products</h2>
     <div class="products-grid">
@@ -392,7 +382,6 @@
       </div>
     </div>
   </section>
-
   <section id="contact" role="region" aria-labelledby="contact-title">
     <h2 id="contact-title">Contact Us</h2>
     <form id="contactForm" autocomplete="off">
@@ -421,11 +410,9 @@
       <p>Office Address: 1206, Sathy Main Road, Moor Market, Ganapathy, Coimbatore-06</p>
     </div>
   </section>
-
   <footer>
     &copy; 2025 RAMDEV PVC. All rights reserved.
   </footer>
-
   <script>
     const buttons = document.querySelectorAll('nav button');
     const sections = document.querySelectorAll('section');
@@ -443,7 +430,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
-
     // Contact form EmailJS integration
     document.getElementById("contactForm").addEventListener("submit", function(e){
       e.preventDefault();
@@ -451,7 +437,6 @@
       const phone = document.getElementById("phone").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
-
       if (name === "" || phone === "" || email === "" || message === "") {
         alert("All fields are required.");
         return false;
@@ -464,7 +449,6 @@
         alert("Please enter a valid Gmail address ending with @gmail.com.");
         return false;
       }
-
       emailjs.send("service_pxhkkof", "template_h1dv8lp", {
         from_name: name,
         from_phone: phone,
@@ -480,12 +464,13 @@
         alert("Failed to send message. Please try again later.");
       });
     });
-
     function openPdfSameTab(url) {
       window.open(url, '_blank');
     }
   </script>
 </body>
 </html>
+
+
 
 
